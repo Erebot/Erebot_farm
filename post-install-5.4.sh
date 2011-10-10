@@ -2,7 +2,7 @@ instdir=$2
 pear="$instdir/bin/pear"
 
 echo "Installing the remaining packages/extensions"
-# @BUG: only xdebug-dev is known to work with PHP 5.4.
+# @BUG: only xdebug-dev is known to work with PHP 5.4 ATM.
 tmp=/tmp/pear.`echo $RANDOM`
 mkdir "$tmp"
 pushd "$tmp"
