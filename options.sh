@@ -1,43 +1,46 @@
 #!/bin/sh
 
-configoptions="
---disable-all
---disable-sigchild
---with-regex
---with-openssl
---with-zlib
---enable-bcmath
---with-bz2
---enable-calendar
---with-curl
---with-gd
---enable-gd-native-ttf
---with-gettext
---with-gmp
---enable-mbstring
---with-mcrypt
---with-mhash
---enable-pcntl
---with-readline
---with-recode
---enable-simplexml
---enable-soap
---enable-sockets
---with-pdo-sqlite
---enable-sysvmsg
---enable-sysvsem
---enable-sysvshm
---with-xsl
---enable-zip
---enable-posix
---enable-libxml
---enable-dom
---enable-xml
---enable-xmlreader
---enable-xmlwriter
---enable-simplexml
---enable-tokenizer
---enable-pdo
---enable-ctype
---enable-json
+configoptions="\
+--disable-all \
+--disable-short-tags \
+--disable-sigchild \
+--enable-debug \
+--with-layout=GNU \
+--with-regex \
+--with-openssl \
+--with-zlib \
+--enable-bcmath \
+--with-bz2 \
+--enable-calendar \
+--with-curl \
+--with-gd \
+--enable-gd-native-ttf \
+--with-gettext \
+--with-gmp \
+--enable-mbstring \
+--with-mcrypt \
+--with-mhash \
+--enable-pcntl \
+--with-readline \
+--with-recode \
+--enable-simplexml \
+--enable-soap \
+--enable-sockets \
+--with-pdo-sqlite \
+--enable-sysvmsg \
+--enable-sysvsem \
+--enable-sysvshm \
+--with-xsl \
+--enable-zip \
+--enable-posix \
+--enable-libxml \
+--enable-dom \
+--enable-xml \
+--enable-xmlreader \
+--enable-xmlwriter \
+--enable-simplexml \
+--enable-tokenizer \
+--enable-pdo \
+--enable-ctype \
+--enable-json \
 "
