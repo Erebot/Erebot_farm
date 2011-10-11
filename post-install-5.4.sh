@@ -14,11 +14,11 @@ pushd "$tmp"
 popd
 rm -rf "$tmp"
 
-"$pear" install phpunit/phpcpd
-"$pear" install pdepend/PHP_Depend
-"$pear" install phpmd/PHP_PMD
-"$pear" install pear/HTTP_Request2-beta
-"$pear" install phpunit/PHPUnit
-"$pear" install phing/phing
+"$pear" install -os phpunit/phpcpd
+"$pear" install -os pdepend/PHP_Depend
+"$pear" install -os phpmd/PHP_PMD
+"$pear" install -os pear/HTTP_Request2-beta
+"$pear" install -os phpunit/PHPUnit
+"$pear" install -os phing/phing
 
 exit 0
