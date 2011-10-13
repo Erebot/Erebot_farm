@@ -1,13 +1,15 @@
-instdir=$2
-pear="$instdir/bin/pear"
-
 echo "Installing the remaining packages/extensions"
-"$pear" install -os pecl/xdebug
-"$pear" install -os phpunit/phpcpd
-"$pear" install -os pdepend/PHP_Depend
-"$pear" install -os phpmd/PHP_PMD
-"$pear" install -os pear/HTTP_Request2-beta
-"$pear" install -os phpunit/PHPUnit
-"$pear" install -os phing/phing
+for pkg in                      \
+    pecl/xdebug                 \
+    pear.phpunit/phpcpd         \
+    pear.pdepend.org/PHP_Depend \
+    pear.phpmd.org/PHP_PMD      \
+    pear/HTTP_Request2-beta     \
+    pear.phpunit.de/PHPUnit     \
+    pear.phing.info/phing       \
+; do
+    echo "Installing '$pkg'"
+    "$2/bin/pear" install -os
+done
 
 exit 0

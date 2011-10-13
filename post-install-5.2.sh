@@ -1,23 +1,21 @@
-instdir=$2
-pear="$instdir/bin/pear"
-
-echo "Installing the remaining packages/extensions"
-"$pear" install -os pecl/intl
-"$pear" install -os pecl/hash
-"$pear" install -os pecl/phar
-"$pear" install -os pecl/xdebug
-
+echo "Installing the remaining packages/extensions..."
 # @BUG: File_Iterator > 1.2.4 requires pear >= 1.9.2.
-"$pear" install -os phpunit/File_Iterator-1.2.4
-"$pear" install -os phpunit/phpcpd
-
 # @BUG: PHP_Depend >= 0.10.x is incompatible with phing 2.4.3.
-"$pear" install -os pdepend/PHP_Depend-0.9.19
-
 # @BUG: PHP_PMD depends on certain versions of PHP_Depend, but see above.
-"$pear" install -os phpmd/PHP_PMD-0.2.7
-
-"$pear" install -os phpunit/PHPUnit-3.4.0
-"$pear" install -os phing/phing-2.4.3
+for pkg in                              \
+    pecl/intl                           \
+    pecl/hash                           \
+    pecl/phar                           \
+    pecl/xdebug                         \
+    pear.phpunit.de/File_Iterator-1.2.4 \
+    pear.phpunit.de/phpcpd              \
+    pear.pdepend.org/PHP_Depend-0.9.19  \
+    pear.phpmd.org/PHP_PMD-0.2.7        \
+    pear.phpunit.de/PHPUnit-3.4.0       \
+    pear.phing.info/phing-2.4.3         \
+; do
+    echo "Installing '$pkg'"
+    "$2/bin/pear" install -os
+done
 
 exit 0

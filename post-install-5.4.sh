@@ -1,11 +1,11 @@
 instdir=$2
-pear="$instdir/bin/pear"
 
 echo "Installing the remaining packages/extensions"
 # @BUG: only xdebug-dev is known to work with PHP 5.4 ATM.
 tmp=/tmp/pear.`echo $RANDOM`
 mkdir "$tmp"
 pushd "$tmp"
+    echo "Installing xdebug-dev"
     wget -O- https://github.com/derickr/xdebug/tarball/master | tar zxvf - --strip-components 1
     "$instdir/bin/phpize" && \
     ./configure --with-php-config="$instdir/bin/php-config" && \
@@ -14,11 +14,16 @@ pushd "$tmp"
 popd
 rm -rf "$tmp"
 
-"$pear" install -os phpunit/phpcpd
-"$pear" install -os pdepend/PHP_Depend
-"$pear" install -os phpmd/PHP_PMD
-"$pear" install -os pear/HTTP_Request2-beta
-"$pear" install -os phpunit/PHPUnit
-"$pear" install -os phing/phing
+for pkg in                      \
+    pear.phpunit/phpcpd         \
+    pear.pdepend.org/PHP_Depend \
+    pear.phpmd.org/PHP_PMD      \
+    pear/HTTP_Request2-beta     \
+    pear.phpunit.de/PHPUnit     \
+    pear.phing.info/phing       \
+; do
+    echo "Installing '$pkg'"
+    "$2/bin/pear" install -os
+done
 
 exit 0
