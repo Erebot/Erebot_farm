@@ -1,3 +1,7 @@
+
+# Make sure pear is in auto_discover mode.
+"$2/bin/pear" config-set auto_discover 1
+
 echo "Installing common packages/extensions..."
 for pkg in                          \
     pear/PHP_ParserGenerator-alpha  \
