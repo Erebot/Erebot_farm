@@ -15,7 +15,7 @@ for pkg in                              \
     pear.phing.info/phing-2.4.3         \
 ; do
     echo "Installing '$pkg'"
-    "$2/bin/pear" install -os
+    "$2/bin/pear" install -os $pkg
 done
 
 exit 0

@@ -7,7 +7,7 @@ for pkg in                          \
     pear/PHP_CodeSniffer            \
 ; do
     echo "Installing '$pkg'"
-    "$2/bin/pear" install -os
+    "$2/bin/pear" install -os $pkg
 done
 
 exit 0
