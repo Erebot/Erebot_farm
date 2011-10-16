@@ -1,7 +1,7 @@
 echo "Installing the remaining packages/extensions"
 for pkg in                      \
     pecl/xdebug                 \
-    pear.phpunit/phpcpd         \
+    pear.phpunit.de/phpcpd      \
     pear.pdepend.org/PHP_Depend \
     pear.phpmd.org/PHP_PMD      \
     pear/HTTP_Request2-beta     \

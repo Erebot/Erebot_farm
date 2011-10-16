@@ -15,7 +15,7 @@ popd
 rm -rf "$tmp"
 
 for pkg in                      \
-    pear.phpunit/phpcpd         \
+    pear.phpunit.de/phpcpd      \
     pear.pdepend.org/PHP_Depend \
     pear.phpmd.org/PHP_PMD      \
     pear/HTTP_Request2-beta     \
