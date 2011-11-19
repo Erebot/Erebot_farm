@@ -1,4 +1,3 @@
-
 # Make sure pear is in auto_discover mode.
 "$2/bin/pear" config-set auto_discover 1
 
@@ -9,8 +8,9 @@ for pkg in                          \
     pear/PHP_CodeSniffer            \
     pear/Console_CommandLine        \
 ; do
-    echo "Installing '$pkg'"
-    "$2/bin/pear" install -os $pkg
+    echo -n "Installing '$pkg'... "
+    ( "$2/bin/pear" info $pkg &> /dev/null && echo "Already installed" ) || \
+    ( "$2/bin/pear" install -os $pkg > /dev/null && echo "OK" )
 done
 
 exit 0

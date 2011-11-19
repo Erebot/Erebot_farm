@@ -8,8 +8,9 @@ for pkg in                      \
     pear.phpunit.de/PHPUnit     \
     pear.phing.info/phing       \
 ; do
-    echo "Installing '$pkg'"
-    "$2/bin/pear" install -os $pkg
+    echo -n "Installing '$pkg'... "
+    ( "$2/bin/pear" info $pkg &> /dev/null && echo "Already installed" ) || \
+    ( "$2/bin/pear" install -os $pkg > /dev/null && echo "OK" )
 done
 
 exit 0
