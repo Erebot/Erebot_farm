@@ -15,8 +15,11 @@ for pkg in                              \
     pear.phing.info/phing-2.4.3         \
 ; do
     echo -n "Installing '$pkg'... "
+    # The piped echo is necessary because pecl/intl usually prompts
+    # for the path to ICU's installation, instead of using its default
+    # value or trying to guess the correct value. We use the default path.
     ( "$2/bin/pear" info $pkg &> /dev/null && echo "Already installed" ) || \
-    ( "$2/bin/pear" install -os $pkg > /dev/null && echo "OK" )
+    ( echo -e "\n\n" | "$2/bin/pear" install -os $pkg > /dev/null && echo "OK" )
 done
 
 exit 0
