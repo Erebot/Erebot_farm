@@ -31,6 +31,7 @@ configoptions="\
 --enable-sysvsem \
 --enable-sysvshm \
 --with-xsl \
+--with-iconv \
 --enable-zip \
 --enable-posix \
 --enable-libxml \
