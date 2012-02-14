@@ -2,10 +2,11 @@
 
 configoptions="\
 $configoptions \
---enable-sqlite-utf8 \
---enable-zend-multibyte \
+--enable-fpm \
 --enable-intl \
 --enable-phar \
+--enable-sqlite-utf8 \
+--enable-zend-multibyte \
 --with-sqlite3 \
 "
 
