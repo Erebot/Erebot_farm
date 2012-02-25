@@ -2,7 +2,6 @@
 
 configoptions="\
 $configoptions \
---enable-fpm \
 --enable-intl \
 --enable-phar \
 --enable-sqlite-utf8 \
