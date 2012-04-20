@@ -7,5 +7,7 @@ $configoptions \
 --with-pcre-regex \
 --enable-spl \
 --enable-reflection \
+--enable-fastcgi \
+--enable-force-cgi-redirect \
 "
 

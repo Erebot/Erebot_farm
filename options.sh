@@ -44,4 +44,5 @@ configoptions="\
 --enable-pdo \
 --enable-ctype \
 --enable-json \
+--enable-session \
 "
