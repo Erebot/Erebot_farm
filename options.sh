@@ -4,7 +4,6 @@ configoptions="\
 --disable-all \
 --disable-short-tags \
 --disable-sigchild \
---enable-debug \
 --with-layout=GNU \
 --with-regex \
 --with-openssl \

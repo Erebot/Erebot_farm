@@ -1,6 +1,6 @@
-5.3.13-debug
-5.3.13-32bits
+5.3.14-debug
+5.3.14-32bits
 5.2.17-debug
 5.2.17-32bits
-5.4.3-debug
-5.4.3-32bits
+5.4.4-debug
+5.4.4-32bits
