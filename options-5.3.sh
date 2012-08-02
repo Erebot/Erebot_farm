@@ -9,7 +9,6 @@ $configoptions \
 --with-sqlite3 \
 --with-mysqli \
 --with-pdo-mysql \
---with-mysql \
---enable-mysqld \
+-enable-mysqld \
 "
 
