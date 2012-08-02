@@ -40,6 +40,4 @@ configoptions="\
 --enable-ctype \
 --enable-json \
 --enable-session \
---with-mysqli \
---with-pdo-mysql \
 "
