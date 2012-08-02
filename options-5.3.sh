@@ -7,8 +7,8 @@ $configoptions \
 --enable-sqlite-utf8 \
 --enable-zend-multibyte \
 --with-sqlite3 \
---with-mysqli \
---with-pdo-mysql \
--enable-mysqld \
+--with-mysql=mysqlnd \
+--with-mysqli=mysqlnd \
+--with-pdo-mysql=mysqlnd \
 "
 
