@@ -3,7 +3,7 @@ instdir=$2
 echo "Installing the remaining packages/extensions"
 
 for pkg in                      \
-    pecl/xdebug-2.2.0           \
+    pecl/xdebug                 \
     pear.phpunit.de/phpcpd      \
     pear.pdepend.org/PHP_Depend \
     pear.phpmd.org/PHP_PMD      \
