@@ -2,6 +2,7 @@
 
 configoptions="\
 $configoptions \
+--enable-hash \
 --enable-intl \
 --enable-phar \
 --enable-sqlite-utf8 \
