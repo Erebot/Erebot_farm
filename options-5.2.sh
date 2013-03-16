@@ -5,8 +5,8 @@ $configoptions \
 --enable-sqlite-utf8 \
 --enable-zend-multibyte \
 --with-pcre-regex \
---enable-spl \
---enable-reflection \
+--enable-spl=shared \
+--enable-reflection=shared \
 --enable-fastcgi \
 --enable-force-cgi-redirect \
 "

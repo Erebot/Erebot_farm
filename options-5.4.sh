@@ -3,11 +3,11 @@
 configoptions="\
 $configoptions \
 --enable-hash \
---enable-intl \
---enable-phar \
---with-sqlite3 \
---with-mysql=mysqlnd \
---with-mysqli=mysqlnd \
---with-pdo-mysql=mysqlnd \
+--enable-intl=shared \
+--enable-phar=shared \
+--with-sqlite3=shared \
+--with-mysql=shared,mysqlnd \
+--with-mysqli=shared,mysqlnd \
+--with-pdo-mysql=shared,mysqlnd \
 "
 
