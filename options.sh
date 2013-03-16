@@ -33,7 +33,6 @@ configoptions="\
 --enable-xml=shared \
 --enable-xmlreader=shared \
 --enable-xmlwriter=shared \
---enable-simplexml=shared \
 --enable-tokenizer=shared \
 --enable-pdo=shared \
 --enable-ctype=shared \

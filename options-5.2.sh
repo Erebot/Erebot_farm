@@ -2,6 +2,9 @@
 
 configoptions="\
 $configoptions \
+--enable-simplexml \
+--enable-cli \
+--enable-cgi \
 --enable-sqlite-utf8 \
 --enable-zend-multibyte \
 --with-pcre-regex \
