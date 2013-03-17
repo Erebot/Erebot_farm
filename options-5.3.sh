@@ -3,9 +3,6 @@
 configoptions="\
 $configoptions \
 --enable-simplexml=shared \
---enable-cli \
---enable-cgi \
---enable-fpm \
 --enable-hash \
 --enable-intl=shared \
 --enable-phar=shared \
