@@ -38,4 +38,5 @@ configoptions="\
 --enable-ctype=shared \
 --enable-json=shared \
 --enable-session=shared \
+--enable-soap=shared \
 "
