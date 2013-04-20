@@ -1,9 +1,9 @@
 5.2.17-debug-pear
-5.3.23-debug-pear
-5.4.13-debug-pear
-5.5.0beta2-debug-pear
+5.3.24-debug-pear
+5.4.14-debug-pear
+5.5.0beta3-debug-pear
 
 5.2.17-32bits-pear
-5.3.23-32bits-pear
-5.4.13-32bits-pear
-5.5.0beta2-32bits-pear
+#5.3.24-32bits-pear
+#5.4.14-32bits-pear
+#5.5.0beta3-32bits-pear
