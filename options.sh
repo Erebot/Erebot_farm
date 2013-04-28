@@ -20,7 +20,7 @@ configoptions="\
 --with-readline=shared \
 --enable-soap=shared \
 --enable-sockets=shared \
---with-pdo-sqlite=shared \
+--with-pdo-sqlite \
 --enable-sysvmsg=shared \
 --enable-sysvsem=shared \
 --enable-sysvshm=shared \
@@ -34,7 +34,7 @@ configoptions="\
 --enable-xmlreader=shared \
 --enable-xmlwriter=shared \
 --enable-tokenizer=shared \
---enable-pdo=shared \
+--enable-pdo \
 --enable-ctype=shared \
 --enable-json=shared \
 --enable-session=shared \
