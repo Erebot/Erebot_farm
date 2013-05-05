@@ -14,7 +14,6 @@ configoptions="\
 --with-gettext=shared \
 --enable-mbstring=shared \
 --enable-pcntl=shared \
---with-readline=shared \
 --enable-soap=shared \
 --enable-sockets=shared \
 --with-pdo-sqlite \
