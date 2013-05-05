@@ -11,8 +11,6 @@ configoptions="\
 --enable-bcmath=shared \
 --with-bz2=shared \
 --enable-calendar=shared \
---with-gd=shared \
---enable-gd-native-ttf \
 --with-gettext=shared \
 --with-gmp=shared \
 --enable-mbstring=shared \
