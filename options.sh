@@ -12,7 +12,6 @@ configoptions="\
 --with-bz2=shared \
 --enable-calendar=shared \
 --with-gettext=shared \
---with-gmp=shared \
 --enable-mbstring=shared \
 --enable-pcntl=shared \
 --with-readline=shared \
