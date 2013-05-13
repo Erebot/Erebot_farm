@@ -7,7 +7,7 @@ for pkg in                      \
     pear.phpunit.de/phpcpd      \
     pear.pdepend.org/PHP_Depend \
     pear.phpmd.org/PHP_PMD      \
-    pear/HTTP_Request2-beta     \
+    pear/HTTP_Request2          \
     pear.phpunit.de/PHPUnit     \
     pear.phing.info/phing       \
 ; do
