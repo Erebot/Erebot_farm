@@ -1,7 +1,7 @@
 5.3.25-debug-pear
 5.4.15-debug-pear
-5.5.0RC1-debug-pear
+5.5.0RC2-debug-pear
 
 5.3.25-32bits-pear
 5.4.15-32bits-pear
-5.5.0RC1-32bits-pear
+5.5.0RC2-32bits-pear
