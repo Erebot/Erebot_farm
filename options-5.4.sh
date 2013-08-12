@@ -4,7 +4,7 @@ configoptions="\
 $configoptions \
 --enable-simplexml=shared \
 --enable-hash \
---enable-intl=shared \
+--enable-intl \
 --enable-phar=shared \
 --with-sqlite3 \
 --with-mysql=shared,mysqlnd \
