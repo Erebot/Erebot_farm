@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 pushd "php-$1"
 patch -N -p1 < ../custom/icu-pkg-config54.diff
