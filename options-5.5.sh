@@ -1,7 +1,7 @@
 #!/bin/sh
 
 pushd "php-$1"
-patch -N -p1 < ../custom/icu-pkg-config.diff
+patch -r - -N -p1 < ../custom/icu-pkg-config.diff
 PHP_AUTOCONF=autoconf ./buildconf --force
 popd
 
