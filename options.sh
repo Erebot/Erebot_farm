@@ -35,4 +35,5 @@ configoptions="\
 --enable-json=shared \
 --enable-session=shared \
 --enable-soap=shared \
+--enable-filter \
 "
