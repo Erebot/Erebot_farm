@@ -36,4 +36,5 @@ configoptions="\
 --enable-session=shared \
 --enable-soap=shared \
 --enable-filter \
+--with-gmp=shared \
 "
