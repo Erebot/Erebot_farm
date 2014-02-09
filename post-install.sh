@@ -2,9 +2,8 @@ echo "Installing the remaining packages/extensions"
 for pkg in                      \
     pecl/xdebug                 \
     pecl/xhprof-beta            \
-    pecl/propro                 \
-    pecl/raphf                  \
-    pecl/pecl_http              \
+    pecl/pecl_http-1.7.6        \
+    pecl/ssh2-beta              \
 ; do
     echo -n "Installing '$pkg'... "
     ( "$2/bin/pear" info $pkg &> /dev/null && echo "Already installed" ) || \
