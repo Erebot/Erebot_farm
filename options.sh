@@ -37,4 +37,5 @@ configoptions="\
 --enable-soap=shared \
 --enable-filter \
 --with-gmp=shared \
+--disable-mysqlnd-compression-support \
 "

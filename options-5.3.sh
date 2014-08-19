@@ -18,5 +18,6 @@ $configoptions \
 --with-mysql=shared,mysqlnd \
 --with-mysqli=shared,mysqlnd \
 --with-pdo-mysql=shared,mysqlnd \
+--enable-ucd-snmp-hack \
 "
 
