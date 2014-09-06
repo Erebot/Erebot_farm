@@ -1,9 +1,9 @@
 5.3.29-debug-pear
-5.4.31-debug-pear
-5.5.15-debug-pear
-5.6.0RC4-debug-pear
+5.4.32-debug-pear
+5.5.16-debug-pear
+5.6.0-debug-pear
 
 5.3.29-32bits-pear
-5.4.31-32bits-pear
-5.5.15-32bits-pear
-5.6.0RC4-32bits-pear
+5.4.32-32bits-pear
+5.5.16-32bits-pear
+5.6.0-32bits-pear
