@@ -3,7 +3,6 @@
 pushd "php-$1"
 patch -r - -N -p1 < ../custom/icu-pkg-config54.diff
 PHP_AUTOCONF=autoconf ./buildconf --force
-patch -r - -N -p1 < ../custom/mcrypt.diff
 popd
 
 configoptions="\
