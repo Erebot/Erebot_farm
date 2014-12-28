@@ -3,6 +3,7 @@ echo "Installing the remaining packages/extensions"
 exts=" \
     pecl/xdebug \
     pecl/xhprof-beta \
+    pecl/PAM-1.0.3 \
 "
 
 if [ "$VMAJOR.$VMINOR" = "5.4" -a "$ARCH" != "i386" ]; then
