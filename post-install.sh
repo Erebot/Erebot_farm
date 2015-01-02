@@ -4,12 +4,14 @@ exts=" \
     pecl/xdebug \
     pecl/xhprof-beta \
     pecl/PAM-1.0.3 \
+    pecl/vld-beta \
 "
 
 if [ "$VMAJOR.$VMINOR" = "5.4" -a "$ARCH" != "i386" ]; then
     exts="$exts \
     pecl/ssh2-beta \
     pecl/pecl_http-1.7.6 \
+    pecl/krb5 \
     "
 fi
 
