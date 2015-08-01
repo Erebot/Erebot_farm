@@ -2,7 +2,10 @@
 
 pushd "php-$1"
 patch -r - -N -p1 < ../custom/icu-pkg-config.diff
-PHP_AUTOCONF=autoconf ./buildconf --force
+if [ $? -eq 0 ]; then
+    PHP_AUTOCONF=autoconf ./buildconf --force
+    touch --reference=buildconf configure
+fi
 popd
 
 configoptions="\

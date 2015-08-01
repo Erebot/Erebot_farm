@@ -2,6 +2,7 @@
 
 pushd "php-$1"
 patch -r - -N -p1 < ../custom/icu-pkg-config54.diff
+patch -r - -N -p1 < ../custom/patch-openssl-php53.diff
 PHP_AUTOCONF=autoconf ./buildconf --force
 popd
 

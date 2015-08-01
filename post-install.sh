@@ -1,16 +1,26 @@
 echo "Installing the remaining packages/extensions"
 
+if [ "$VMAJOR.$VMINOR" = "0.0" ]; then
+    exit 0
+fi
+
 exts=" \
     pecl/xdebug \
     pecl/xhprof-beta \
-    pecl/PAM-1.0.3 \
     pecl/vld-beta \
 "
+
+if [ "$ARCH" != "i386" ]; then
+    exts="$exts \
+    pecl/raphf \
+    pecl/propro \
+    pecl/pecl_http \
+    "
+fi
 
 if [ "$VMAJOR.$VMINOR" = "5.4" -a "$ARCH" != "i386" ]; then
     exts="$exts \
     pecl/ssh2-beta \
-    pecl/pecl_http-1.7.6 \
     pecl/krb5 \
     "
 fi

@@ -1,0 +1,20 @@
+Apply patch : patch -p1 < icu-pkg-...
+Regenerate config files : PHP_AUTOCONF=/usr/bin/autoconf2.59 ./buildconf --force
+Clean up : make distclean
+Rebuild and enjoy
+diff --git a/acinclude.m4 b/acinclude.m4
+index 6c97dc3..fdc9b7e 100644
+--- a/acinclude.m4	2015-05-15 17:47:02.294527384 +0200
++++ b/acinclude.m4	2015-05-15 17:47:16.714040596 +0200
+@@ -2364,8 +2364,10 @@
+       AC_MSG_ERROR([OpenSSL version 0.9.6 or greater required.])
+     fi
+ 
+-    if test -n "$OPENSSL_LIBS" && test -n "$OPENSSL_INCS"; then
++    if test -n "$OPENSSL_LIBS"; then
+       PHP_EVAL_LIBLINE($OPENSSL_LIBS, $1)
++    fi
++    if test -n "$OPENSSL_INCS"; then
+       PHP_EVAL_INCLINE($OPENSSL_INCS)
+     fi
+   fi

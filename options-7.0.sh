@@ -24,3 +24,7 @@ $configoptions \
 --enable-phpdbg \
 "
 
+if [ "$VMAJOR" = "0" -a "$ARCH" != "i386" ]; then
+    configoptions="$configoptions --enable-gcc-global-regs"
+fi
+
