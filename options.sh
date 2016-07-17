@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [ "$ARCH" = "i386" ]; then
+    gmp_dir="/usr/include/`dpkg-architecture -A $ARCH -qDEB_TARGET_MULTIARCH`/"
+else
+    gmp_dir="/usr/include/`dpkg-architecture -qDEB_TARGET_MULTIARCH`/"
+fi
+
 configoptions="\
 --disable-all \
 --disable-short-tags \
@@ -14,7 +20,6 @@ configoptions="\
 --with-gettext=shared \
 --enable-mbstring=shared \
 --enable-pcntl=shared \
---enable-soap=shared \
 --enable-sockets=shared \
 --with-pdo-sqlite \
 --enable-sysvmsg=shared \
@@ -36,7 +41,7 @@ configoptions="\
 --enable-session=shared \
 --enable-soap=shared \
 --enable-filter \
---with-gmp=shared \
+--with-gmp=shared,$gmp_dir \
 --with-readline \
 --disable-mysqlnd-compression-support \
 "

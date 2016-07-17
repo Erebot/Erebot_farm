@@ -3,7 +3,7 @@
 pushd "php-$1"
 patch -r - -N -p1 < ../custom/icu-pkg-config.diff
 if [ $? -eq 0 ]; then
-    PHP_AUTOCONF=autoconf ./buildconf --force
+    PHP_AUTOCONF=autoconf2.59 ./buildconf --force
     touch --reference=buildconf configure
 fi
 popd
@@ -16,15 +16,11 @@ $configoptions \
 --enable-phar=shared \
 --with-mcrypt=shared \
 --with-sqlite3 \
---with-mysql=shared,mysqlnd \
 --with-mysqli=shared,mysqlnd \
 --with-pdo-mysql=shared,mysqlnd \
 --enable-opcache=shared \
 --enable-fpm \
 --enable-phpdbg \
+--enable-gcc-global-regs \
 "
-
-if [ "$VMAJOR" = "0" -a "$ARCH" != "i386" ]; then
-    configoptions="$configoptions --enable-gcc-global-regs"
-fi
 

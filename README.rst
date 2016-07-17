@@ -6,35 +6,34 @@ for Erebot.
 
 Usually, only ``default-versions.txt`` will change when a new version of PHP
 is released. Some files will also be renamed due to being tied to a particular
-version (and so must be renamed when the version changes).
+version and so must be renamed when the version changes.
 
 
 Maintained versions
 -------------------
 
-I currently keep 9 versions, spread across the following PHP branches:
+I currently keep several versions, spread across the following PHP branches:
 
 * PHP 5.3.x
 * PHP 5.4.x
 * PHP 5.5.x
 * PHP 5.6.x
-* PHP 0.0.HEAD (kind of like a "nightly" build)
+* PHP 7.0.x
+* PHP 7.1.x
+* test builds (nightly, alpha/beta/RC, etc.)
 
 For each branch, I build two "flavours":
 
 * A 64-bits version with a pear installation and debugging symbols.
 * A 32-bits version with a pear installation but no debugging symbols.
 
-The only exception is PHP 0.0.HEAD where I only build the 64-bits version
-because the 32-bits version does not compile correctly for me right now.
-
 These branches match the current stable branches from the official PHP project,
-with the addition of PHP 5.3.x which you can still find on some (maintained)
-Linux distributions (eg. RedHat Enterprise Linux 5.x).
+with the addition of PHP 5.3.x and PHP 5.4.x which you can still find on some
+(maintained) Linux distributions, eg. RedHat Enterprise Linux 5.x.
 
 I use the 64-bits version from the oldest branch still maintained by the PHP
-folks as the main version (ie. in ``switch-phpfarm``).
-So for now, that is PHP 5.4.x.
+folks as the main version, ie. with ``switch-phpfarm``.
+So for now, that is PHP 5.5.x.
 
 
 Native extensions
@@ -53,7 +52,7 @@ More specifically, all native extensions have been disabled, except for:
 * ctype
 * date
 * dom
-* ereg (removed from PHP 0.0.HEAD onwards)
+* ereg (removed from PHP 7.0.0 onwards)
 * filter
 * gettext
 * gmp
@@ -63,7 +62,7 @@ More specifically, all native extensions have been disabled, except for:
 * json
 * libxml
 * mbstring
-* mysql (removed from PHP 0.0.HEAD onwards)
+* mysql (removed from PHP 7.0.0 onwards)
 * mysqli
 * mysqlnd
 * opcache (added from PHP 5.5.x onwards)
@@ -103,7 +102,7 @@ The main version also has the following extensions:
 * snmp
 
 Whenever possible, each extension is built as a shared dynamically linked
-library (ie. an .so file).
+library, ie. as an ``.so`` file.
 
 
 PEAR packages / PECL extensions
@@ -113,23 +112,25 @@ manage PHP code, so there is no real need for PEAR packages anyway).
 
 The following PECL extensions are installed:
 
-* pecl_http (aka. http): only on x86_64 due to multiarch issues
-* propro: only on x86_64 (dependency for pecl_http)
-* raphf: only on x86_64 (dependency for pecl_http)
+* pecl_http (aka. http)
+* propro (dependency for pecl_http)
+* raphf (dependency for pecl_http)
+* tideways
 * vld
 * xdebug
-* xhprof
+* -xhprof- (replaced by the Tideways PHP profiler)
 
 
 Additionally, the main version also has the following PECL extensions:
 
+* curl
 * krb5
 * ssh2
 
 
 Other features
 --------------
-When supported by a particular version, the following features are enabled:
+When supported by a particular version, the following features are used:
 
 * ``--disable-all``
 * ``--disable-short-tags``
@@ -150,23 +151,26 @@ Specific php.ini settings
 I use the default php.ini.dist file with a few changes listed below:
 
 * The ``include_path`` is set so that packages installed through PEAR can still
-  be used (ie. it includes PEAR's "php" directory).
+  be used, ie. it includes PEAR's ``php`` directory
 
-* The ``extension_dir`` is set so that PECL and shared extensions can be loaded.
+* The ``extension_dir`` is set so that PECL and shared extensions can be loaded
 
-* A default output directory as been set for xhprof's trace files.
+* -A default output directory as been set for xhprof's trace files-
 
-* ``phar.readonly`` is Off.
+* ``phar.readonly`` is Off
 
-* Unicode detection is Off.
+* Unicode detection is Off
 
 * ``error_reporting`` reports any potential issue PHP detects, even tiny little
-  ones (yeah, even notices and deprecation warnings).
+  ones like notices and deprecation warnings
 
-* The ``memory_limit`` has been raised to 256 MB.
+* The ``memory_limit`` has been raised to 256 MB
 
 * Xdebug's ``max_nesting_level`` has been raised to 200 to allow for more
-  recursion.
+  recursion
+
+* ``tideways.auto_prepend_library=0`` is set to use the open-source version
+  of the tideways profiler
 
 
 Special patches
@@ -186,4 +190,7 @@ The following special patches have been applied:
   will be in an architecture-specific directory).
   This, in turn, avoids errors about missing symbols when loading ``openssl.so``
   (``undefined symbol GENERAL_NAME_free``).
+
+* ``patch-openssl10-php53.diff`` for PHP 5.3.x: adds compatibility with the
+  structures used in openssl 1.0.x.
 
