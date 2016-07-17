@@ -50,7 +50,7 @@ exts=" \
     "
 #fi
 
-if [ "$VMAJOR.$VMINOR" = "5.4" -a "$ARCH" != "i386" ]; then
+if [ "$VMAJOR.$VMINOR" = "5.5" -a "$ARCH" != "i386" ]; then
     exts="$exts \
     pecl/vld-beta \
     pecl/ssh2-beta \
