@@ -96,6 +96,8 @@ More specifically, all native extensions have been disabled, except for:
 
 The main version also has the following extensions:
 
+* fileinfo
+* gd
 * mcrypt
 * pdo_pgsql
 * pgsql
