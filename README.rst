@@ -31,9 +31,7 @@ These branches match the current stable branches from the official PHP project,
 with the addition of PHP 5.3.x and PHP 5.4.x which you can still find on some
 (maintained) Linux distributions, eg. RedHat Enterprise Linux 5.x.
 
-I use the 64-bits version from the oldest branch still maintained by the PHP
-folks as the main version, ie. with ``switch-phpfarm``.
-So for now, that is PHP 5.5.x.
+Sometimes, I build specific versions based on projects requirements.
 
 
 Native extensions
