@@ -1,16 +1,18 @@
 5.3.29-debug-pear
 5.4.45-debug-pear
 5.5.38-debug-pear
-5.6.28-debug-pear
-7.0.13-debug-pear
-7.1.0RC6-debug-pear
+5.6.31-debug-pear
+7.0.21-debug-pear
+7.1.7-debug-pear
+7.2.0beta1-debug-pear
 
-5.6.28-pear
-7.1.0RC6-pear
+5.6.31-pear
+7.1.7-pear
 
 5.3.29-32bits-pear
 5.4.45-32bits-pear
 5.5.38-32bits-pear
-5.6.28-32bits-pear
-7.0.13-32bits-pear
-7.1.0RC6-32bits-pear
+5.6.31-32bits-pear
+7.0.21-32bits-pear
+7.1.7-32bits-pear
+7.2.0beta1-32bits-pear
