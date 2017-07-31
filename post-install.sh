@@ -38,7 +38,6 @@ fi
 exts=" \
     pecl/xdebug$xdebug_ver \
     pecl/crypto-devel \
-    pecl/libsodium \
 "
 #pecl/xhprof-beta \
 
@@ -55,6 +54,11 @@ else
     # We pull 3.1.1RC1 due to
     # https://github.com/m6w6/ext-http/issues/62
     http_ver=-3.1.1
+
+    # Install libsodium bindings too
+    exts="$exts \
+pecl/libsodium \
+"
 fi
 
 exts="$exts \
