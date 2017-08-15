@@ -4,7 +4,7 @@ pushd "php-$1"
 patch -r - -N -p1 < ../custom/core-constants.diff
 # Update build-defs.h.in if needed,
 # and force a full recompilation if we do update it.
-test -n "$(cp -uvf ../custom/build-defs.h.in main/)"
+test -n "$(cp -uvf ../custom/build-defs.h.in main/)" && make distclean
 popd
 
 if [ "$ARCH" = "i386" ]; then

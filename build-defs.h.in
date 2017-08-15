@@ -68,10 +68,10 @@ static void _initialize_php_paths(int argc, char* argv[], char* envp[])
         { _PHP_PATH_MACRO_PREFIX,           NULL }
     };
 
-    if (!_php_paths[_PHP_PATH_MACRO_PREFIX][0]) {
+    if (*_php_paths[_PHP_PATH_MACRO_PREFIX] == '\0') {
         /* Retrieve the full path to this executable, resolving symlinks
            and relative components ("." and "..") in the process. */
-        if (NULL == realpath("/proc/self/exe", _php_paths[_PHP_PATH_MACRO_PREFIX])) {
+        if (realpath("/proc/self/exe", _php_paths[_PHP_PATH_MACRO_PREFIX]) == NULL) {
             perror(NULL);
             exit(1);
         }
@@ -89,7 +89,7 @@ static void _initialize_php_paths(int argc, char* argv[], char* envp[])
             strcat(_php_paths[_PHP_PATH_MACRO_PREFIX], "/");
         }
 
-        len = strlen(_php_paths[0]);
+        len = strlen(_php_paths[_PHP_PATH_MACRO_PREFIX]);
         len2 = strlen(prefix);
 
         /* Prepare each path */
