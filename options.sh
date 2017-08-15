@@ -1,5 +1,12 @@
 #!/bin/bash
 
+pushd "php-$1"
+patch -r - -N -p1 < ../custom/core-constants.diff
+# Update build-defs.h.in if needed,
+# and force a full recompilation if we do update it.
+test -n "$(cp -uvf ../custom/build-defs.h.in main/)"
+popd
+
 if [ "$ARCH" = "i386" ]; then
     gmp_dir="/usr/include/`dpkg-architecture -A $ARCH -qDEB_TARGET_MULTIARCH`/"
 else

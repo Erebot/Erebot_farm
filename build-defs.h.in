@@ -1,0 +1,194 @@
+/*                                                                -*- C -*-
+   +----------------------------------------------------------------------+
+   | PHP Version 7                                                        |
+   +----------------------------------------------------------------------+
+   | Copyright (c) 1997-2017 The PHP Group                                |
+   +----------------------------------------------------------------------+
+   | This source file is subject to version 3.01 of the PHP license,      |
+   | that is bundled with this package in the file LICENSE, and is        |
+   | available through the world-wide-web at the following url:           |
+   | http://www.php.net/license/3_01.txt                                  |
+   | If you did not receive a copy of the PHP license and are unable to   |
+   | obtain it through the world-wide-web, please send a note to          |
+   | license@php.net so we can mail you a copy immediately.               |
+   +----------------------------------------------------------------------+
+   | Author: Stig Sæther Bakken <ssb@php.net>                             |
+   +----------------------------------------------------------------------+
+*/
+
+/* $Id$ */
+
+#ifndef _PHP_PATHS
+#define _PHP_PATHS 1
+
+#include <linux/limits.h>
+#include <stdio.h>
+#include <unistd.h>
+
+extern char *dirname(char *__path);
+
+typedef enum {
+    _PHP_PATH_MACRO_PREFIX,
+    _PHP_PATH_MACRO_EXTDIR,
+    _PHP_PATH_MACRO_BINDIR,
+    _PHP_PATH_MACRO_SBINDIR,
+    _PHP_PATH_MACRO_MANDIR,
+    _PHP_PATH_MACRO_LIBDIR,
+    _PHP_PATH_MACRO_DATADIR,
+    _PHP_PATH_MACRO_SYSCONFDIR,
+    _PHP_PATH_MACRO_LOCALSTATEDIR,
+    _PHP_PATH_MACRO_CONF_FILE,
+    _PHP_PATH_MACRO_CONF_DIR,
+    _PHP_PATH_MACRO_PEARDIR,
+    _PHP_PATH_MACRO_LAST
+} _php_path_macro;
+
+static char _php_paths[_PHP_PATH_MACRO_LAST][PATH_MAX];
+
+static void _initialize_php_paths(int argc, char* argv[], char* envp[])
+{
+    char *prefix = "@prefix@";
+    ssize_t len, len2;
+    int i;
+    struct {
+        _php_path_macro index;
+        char * path;
+    } paths[] = {
+        { _PHP_PATH_MACRO_EXTDIR,           "@EXPANDED_EXTENSION_DIR@" },
+        { _PHP_PATH_MACRO_BINDIR,           "@EXPANDED_BINDIR@" },
+        { _PHP_PATH_MACRO_SBINDIR,          "@EXPANDED_SBINDIR@" },
+        { _PHP_PATH_MACRO_MANDIR,           "@EXPANDED_MANDIR@" },
+        { _PHP_PATH_MACRO_LIBDIR,           "@EXPANDED_LIBDIR@" },
+        { _PHP_PATH_MACRO_DATADIR,          "@EXPANDED_DATADIR@" },
+        { _PHP_PATH_MACRO_SYSCONFDIR,       "@EXPANDED_SYSCONFDIR@" },
+        { _PHP_PATH_MACRO_LOCALSTATEDIR,    "@EXPANDED_LOCALSTATEDIR@" },
+        { _PHP_PATH_MACRO_CONF_FILE,        "@EXPANDED_PHP_CONFIG_FILE_PATH@" },
+        { _PHP_PATH_MACRO_CONF_DIR,         "@EXPANDED_PHP_CONFIG_FILE_SCAN_DIR@" },
+        { _PHP_PATH_MACRO_PEARDIR,          "@EXPANDED_PEAR_INSTALLDIR@" },
+        { _PHP_PATH_MACRO_PREFIX,           NULL }
+    };
+
+    if (!_php_paths[_PHP_PATH_MACRO_PREFIX][0]) {
+        /* Retrieve the full path to this executable, resolving symlinks
+           and relative components ("." and "..") in the process. */
+        if (NULL == realpath("/proc/self/exe", _php_paths[_PHP_PATH_MACRO_PREFIX])) {
+            perror(NULL);
+            exit(1);
+        }
+
+        /* Remove the filename from the path */
+        strcpy(_php_paths[_PHP_PATH_MACRO_PREFIX], dirname(_php_paths[_PHP_PATH_MACRO_PREFIX]));
+
+        /* Go back one folder to obtain the actual prefix */
+        strcpy(_php_paths[_PHP_PATH_MACRO_PREFIX], dirname(_php_paths[_PHP_PATH_MACRO_PREFIX]));
+
+        /* Add a trailing "/" if the original prefix contained one */
+        if (prefix[sizeof(prefix) - 1] == '/') {
+            /* strcat() is okay since we freed some space in the buffer above
+               and are only appending one character here. */
+            strcat(_php_paths[_PHP_PATH_MACRO_PREFIX], "/");
+        }
+
+        len = strlen(_php_paths[0]);
+        len2 = strlen(prefix);
+
+        /* Prepare each path */
+        for (i = 0; paths[i].path != NULL; i++) {
+            /* If the original path was empty, we keep it that way */
+            if (*paths[i].path != '\0') {
+                /* First, we copy the prefix */
+                strcpy(_php_paths[ paths[i].index ], _php_paths[_PHP_PATH_MACRO_PREFIX]);
+
+                /* Then, we append the suffix for that particular path */
+                strncpy(_php_paths[ paths[i].index ] + len, paths[i].path + len2, PATH_MAX - strlen(_php_paths[_PHP_PATH_MACRO_PREFIX]));
+            }
+        }
+
+        /* Detect truncations & panic if ony occurs */
+        for (i = 0; i < _PHP_PATH_MACRO_LAST; i++) {
+            if (_php_paths[i][PATH_MAX - 1] != '\0') {
+                fprintf(stderr, "Truncation occurred\n");
+                exit(1);
+            }
+        }
+    }
+}
+
+__attribute__((section(".init_array"))) static void (* _p_initialize_php_paths)(int,char*[],char*[]) = &_initialize_php_paths;
+
+#endif /* _PHP_PATHS */
+
+
+#define CONFIGURE_COMMAND "@CONFIGURE_COMMAND@"
+#define PHP_ADA_INCLUDE		""
+#define PHP_ADA_LFLAGS		""
+#define PHP_ADA_LIBS		""
+#define PHP_APACHE_INCLUDE	""
+#define PHP_APACHE_TARGET	""
+#define PHP_FHTTPD_INCLUDE      ""
+#define PHP_FHTTPD_LIB          ""
+#define PHP_FHTTPD_TARGET       ""
+#define PHP_CFLAGS		"@CFLAGS@"
+#define PHP_DBASE_LIB		""
+#define PHP_BUILD_DEBUG		"@DEBUG_CFLAGS@"
+#define PHP_GDBM_INCLUDE	""
+#define PHP_IBASE_INCLUDE	""
+#define PHP_IBASE_LFLAGS	""
+#define PHP_IBASE_LIBS		""
+#define PHP_IFX_INCLUDE		""
+#define PHP_IFX_LFLAGS		""
+#define PHP_IFX_LIBS		""
+#define PHP_INSTALL_IT		"@INSTALL_IT@"
+#define PHP_IODBC_INCLUDE	""
+#define PHP_IODBC_LFLAGS	""
+#define PHP_IODBC_LIBS		""
+#define PHP_MSQL_INCLUDE	""
+#define PHP_MSQL_LFLAGS		""
+#define PHP_MSQL_LIBS		""
+#define PHP_MYSQL_INCLUDE	"@MYSQL_INCLUDE@"
+#define PHP_MYSQL_LIBS		"@MYSQL_LIBS@"
+#define PHP_MYSQL_TYPE		"@MYSQL_MODULE_TYPE@"
+#define PHP_ODBC_INCLUDE	"@ODBC_INCLUDE@"
+#define PHP_ODBC_LFLAGS		"@ODBC_LFLAGS@"
+#define PHP_ODBC_LIBS		"@ODBC_LIBS@"
+#define PHP_ODBC_TYPE		"@ODBC_TYPE@"
+#define PHP_OCI8_SHARED_LIBADD 	"@OCI8_SHARED_LIBADD@"
+#define PHP_OCI8_DIR			"@OCI8_DIR@"
+#define PHP_OCI8_ORACLE_VERSION		"@OCI8_ORACLE_VERSION@"
+#define PHP_ORACLE_SHARED_LIBADD 	"@ORACLE_SHARED_LIBADD@"
+#define PHP_ORACLE_DIR				"@ORACLE_DIR@"
+#define PHP_ORACLE_VERSION			"@ORACLE_VERSION@"
+#define PHP_PGSQL_INCLUDE	""
+#define PHP_PGSQL_LFLAGS	""
+#define PHP_PGSQL_LIBS		""
+#define PHP_PROG_SENDMAIL	"@PROG_SENDMAIL@"
+#define PHP_SOLID_INCLUDE	""
+#define PHP_SOLID_LIBS		""
+#define PHP_EMPRESS_INCLUDE	""
+#define PHP_EMPRESS_LIBS	""
+#define PHP_SYBASE_INCLUDE	""
+#define PHP_SYBASE_LFLAGS	""
+#define PHP_SYBASE_LIBS		""
+#define PHP_DBM_TYPE		""
+#define PHP_DBM_LIB		""
+#define PHP_LDAP_LFLAGS		""
+#define PHP_LDAP_INCLUDE	""
+#define PHP_LDAP_LIBS		""
+#define PHP_BIRDSTEP_INCLUDE     ""
+#define PHP_BIRDSTEP_LIBS        ""
+#define PHP_INCLUDE_PATH	"@INCLUDE_PATH@"
+#define PHP_SHLIB_SUFFIX        "@SHLIB_DL_SUFFIX_NAME@"
+#define PHP_SHLIB_EXT_PREFIX    ""
+
+#define PEAR_INSTALLDIR             _php_paths[_PHP_PATH_MACRO_PEARDIR]
+#define PHP_EXTENSION_DIR           _php_paths[_PHP_PATH_MACRO_EXTDIR]
+#define PHP_PREFIX                  _php_paths[_PHP_PATH_MACRO_PREFIX]
+#define PHP_BINDIR                  _php_paths[_PHP_PATH_MACRO_BINDIR]
+#define PHP_SBINDIR                 _php_paths[_PHP_PATH_MACRO_SBINDIR]
+#define PHP_MANDIR                  _php_paths[_PHP_PATH_MACRO_MANDIR]
+#define PHP_LIBDIR                  _php_paths[_PHP_PATH_MACRO_LIBDIR]
+#define PHP_DATADIR                 _php_paths[_PHP_PATH_MACRO_DATADIR]
+#define PHP_SYSCONFDIR              _php_paths[_PHP_PATH_MACRO_SYSCONFDIR]
+#define PHP_LOCALSTATEDIR           _php_paths[_PHP_PATH_MACRO_LOCALSTATEDIR]
+#define PHP_CONFIG_FILE_PATH        _php_paths[_PHP_PATH_MACRO_CONF_FILE]
+#define PHP_CONFIG_FILE_SCAN_DIR    _php_paths[_PHP_PATH_MACRO_CONF_DIR]

@@ -2,6 +2,7 @@
 
 pushd "php-$1"
 patch -r - -N -p1 < ../custom/icu-pkg-config.diff
+patch -r - -N -p1 < ../custom/phpdbg-conf-path.diff
 if [ $? -eq 0 ]; then
     PHP_AUTOCONF=autoconf ./buildconf --force
     touch --reference=buildconf configure

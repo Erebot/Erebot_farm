@@ -1,0 +1,12 @@
+--- a/sapi/phpdbg/phpdbg_prompt.c	2017-07-06 00:25:00.000000000 +0200
++++ b/sapi/phpdbg/phpdbg_prompt.c	2017-08-15 18:21:33.024036924 +0200
+@@ -298,7 +298,8 @@
+ 		char *scan_dir = getenv("PHP_INI_SCAN_DIR");
+ 		int i;
+ 
+-		phpdbg_try_file_init(PHPDBG_STRL(PHP_CONFIG_FILE_PATH "/" PHPDBG_INIT_FILENAME), 0 TSRMLS_CC);
++		asprintf(&init_file, "%s/s", PHP_CONFIG_FILE_PATH, PHPDBG_INIT_FILENAME);
++		phpdbg_try_file_init(init_file, strlen(init_file), 0 TSRMLS_CC);
+ 
+ 		if (!scan_dir) {
+ 			scan_dir = PHP_CONFIG_FILE_SCAN_DIR;
