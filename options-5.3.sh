@@ -9,6 +9,7 @@ echo "Applying OpenSSL linking patch"
 patch -r - -N -p1 < ../custom/patch-openssl-php53.diff
 if [ $? -eq 0 ]; then
     PHP_AUTOCONF=autoconf2.59 ./buildconf --force
+    touch --reference=buildconf configure
 fi
 popd
 

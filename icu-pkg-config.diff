@@ -70,7 +70,7 @@ index 6c97dc3..fdc9b7e 100644
 -    ICU_LIBS=`$ICU_CONFIG --ldflags --ldflags-icuio`
 -    PHP_EVAL_INCLINE($ICU_INCS)
 -    PHP_EVAL_LIBLINE($ICU_LIBS, $1)
-+    if test -n "$ICU_LIBS" && test -n "$ICU_INCS"; then
++    if test -n "$ICU_LIBS"; then
 +      PHP_EVAL_INCLINE($ICU_INCS)
 +      PHP_EVAL_LIBLINE($ICU_LIBS, $1)
 +      found_icu=yes
