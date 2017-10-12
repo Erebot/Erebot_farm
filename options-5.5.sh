@@ -14,6 +14,7 @@ $configoptions \
 --enable-hash \
 --enable-intl=shared \
 --enable-phar=shared \
+--with-mcrypt=shared \
 --with-sqlite3 \
 --with-mysql=shared,mysqlnd \
 --with-mysqli=shared,mysqlnd \
