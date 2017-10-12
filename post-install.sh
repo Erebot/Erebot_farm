@@ -69,6 +69,8 @@ exts="$exts \
 pecl/raphf$raphf_ver \
 pecl/propro$propro_ver \
 pecl/pecl_http$http_ver \
+pecl/eio \
+pecl/uopz \
 "
 
 for pkg in $exts; do
