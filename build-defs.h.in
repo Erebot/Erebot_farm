@@ -20,10 +20,19 @@
 
 #ifndef _PHP_PATHS
 #define _PHP_PATHS 1
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
 
 #include <linux/limits.h>
 #include <stdio.h>
 #include <unistd.h>
+
+#ifdef __GNUC__
+#define UNUSED_SYMBOL __attribute__ ((unused))
+#else
+#define UNUSED_SYMBOL
+#endif
 
 extern char *dirname(char *__path);
 
@@ -114,8 +123,11 @@ static void _initialize_php_paths(int argc, char* argv[], char* envp[])
     }
 }
 
-__attribute__((section(".init_array"))) static void (* _p_initialize_php_paths)(int,char*[],char*[]) = &_initialize_php_paths;
+UNUSED_SYMBOL __attribute__((section(".init_array"))) static void (* _p_initialize_php_paths)(int,char*[],char*[]) = &_initialize_php_paths;
 
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
 #endif /* _PHP_PATHS */
 
 
