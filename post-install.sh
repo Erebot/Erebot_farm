@@ -1,3 +1,7 @@
+if [ $PEAR -ne 1 ]; then
+    exit 0
+fi
+
 echo "Installing the remaining packages/extensions"
 
 # Try to install Tideways' PHP profiler
