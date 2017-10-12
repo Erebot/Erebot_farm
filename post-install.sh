@@ -57,7 +57,7 @@ else
     propro_ver=
     # We pull 3.1.1RC1 due to
     # https://github.com/m6w6/ext-http/issues/62
-    http_ver=-3.1.1
+    http_ver=-3.1.1RC1
 
     # Install libsodium bindings too
     exts="$exts \
