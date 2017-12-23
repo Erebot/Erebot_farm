@@ -14,10 +14,11 @@ $configoptions \
 --enable-hash \
 --enable-intl=shared \
 --enable-phar=shared \
---with-mcrypt=shared \
 --with-sqlite3 \
 --with-mysqli=shared,mysqlnd \
 --with-pdo-mysql=shared,mysqlnd \
+--with-libzip \
+--with-password-argon2 \
 --enable-opcache=shared \
 --enable-fpm \
 --enable-phpdbg \

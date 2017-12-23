@@ -18,6 +18,7 @@ $configoptions \
 --with-sqlite3 \
 --with-mysqli=shared,mysqlnd \
 --with-pdo-mysql=shared,mysqlnd \
+--with-libzip \
 --enable-opcache=shared \
 --enable-fpm \
 --enable-phpdbg \
