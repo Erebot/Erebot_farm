@@ -35,8 +35,10 @@ cd "$curdir"
 
 if [ "0$VMAJOR" -eq 5 -a "0$VMINOR" -eq 3 ]; then
     xdebug_ver=-2.2.7
+    uopz_ver=-2.0.6
 else
-    xdebug_ver=
+    xdebug_ver=-2.6.0alpha1
+    uopz_ver=
 fi
 
 exts=" \
@@ -52,6 +54,11 @@ if [ 0$VMAJOR -lt 7 ]; then
     raphf_ver=-1.1.2
     propro_ver=-1.0.2
     http_ver=-2.6.0
+    # On PHP 5.3.0, we need to downgrade the version even further,
+    # but this is already taken care of above.
+    if [ -z "$uopz_ver" ]; then
+        uopz_ver=-2.0.7
+    fi
 else
     raphf_ver=
     propro_ver=
@@ -70,7 +77,7 @@ pecl/raphf$raphf_ver \
 pecl/propro$propro_ver \
 pecl/pecl_http$http_ver \
 pecl/eio \
-pecl/uopz \
+pecl/uopz$uopz_ver \
 "
 
 for pkg in $exts; do
