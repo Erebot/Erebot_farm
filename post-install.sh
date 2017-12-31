@@ -45,7 +45,6 @@ exts=" \
     pecl/xdebug$xdebug_ver \
     pecl/crypto-devel \
 "
-#pecl/xhprof-beta \
 
 if [ 0$VMAJOR -lt 7 ]; then
     # Newer versions only support PHP 7.0.0+
@@ -66,10 +65,14 @@ else
     # https://github.com/m6w6/ext-http/issues/62
     http_ver=-3.1.1RC1
 
-    # Install libsodium bindings too
-    exts="$exts \
+    # Install libsodium bindings on PHP >= 7.0
+    # On PHP 7.2, the extension in now bundled with PHP core,
+    # so we do not need to install it explicitly.
+    if [ $VMINOR -lt 2 ]; then
+        exts="$exts \
 pecl/libsodium \
 "
+    fi
 fi
 
 exts="$exts \

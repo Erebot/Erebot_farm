@@ -19,6 +19,7 @@ $configoptions \
 --with-pdo-mysql=shared,mysqlnd \
 --with-libzip \
 --with-password-argon2 \
+--with-sodium=shared \
 --enable-opcache=shared \
 --enable-fpm \
 --enable-phpdbg \
