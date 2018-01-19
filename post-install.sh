@@ -24,12 +24,12 @@ cd "$curdir"
 # Install LibTomcrypt bindings
 curdir=`pwd`
 cd $2/pear/temp
-if [ ! -f v0.2.3.tar.gz ]; then
-    wget https://github.com/fpoirotte/tomcrypt/archive/v0.2.3.tar.gz
+if [ ! -f v0.3.0.tar.gz ]; then
+    wget https://github.com/fpoirotte/tomcrypt/archive/v0.3.0.tar.gz
 fi
 echo -n "Installing 'pecl/tomcrypt'... "
 ( "$2/bin/pear" info pecl/tomcrypt &> /dev/null && echo "Already installed" ) || \
-( "$2/bin/pear" install -os v0.2.3.tar.gz < /dev/null > /dev/null && echo "OK" )
+( "$2/bin/pear" install -os v0.3.0.tar.gz < /dev/null > /dev/null && echo "OK" )
 cd "$curdir"
 
 
@@ -86,7 +86,7 @@ pecl/uopz$uopz_ver \
 for pkg in $exts; do
     echo -n "Installing '$pkg'... "
     ( "$2/bin/pear" info $pkg &> /dev/null && echo "Already installed" ) || \
-    ( "$2/bin/pear" install -os $pkg < /dev/null > /dev/null && echo "OK" )
+    ( "$2/bin/pear" install -os $pkg < /dev/null && echo "OK" )
 done
 
 exit 0
