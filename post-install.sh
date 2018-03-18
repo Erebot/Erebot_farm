@@ -37,7 +37,7 @@ if [ "0$VMAJOR" -eq 5 -a "0$VMINOR" -eq 3 ]; then
     xdebug_ver=-2.2.7
     uopz_ver=-2.0.6
 else
-    xdebug_ver=-2.6.0beta1
+    xdebug_ver=-2.6.0
     uopz_ver=
 fi
 
