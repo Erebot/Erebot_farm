@@ -7,10 +7,10 @@ echo "Installing the remaining packages/extensions"
 # Try to install Tideways' PHP profiler
 curdir=`pwd`
 cd $2/pear/temp
-if [ ! -d "./php-profiler-extension-4.1.1" ]; then
-    wget https://github.com/tideways/php-profiler-extension/archive/v4.1.1.tar.gz
+if [ ! -d "./php-xhprof-extension-4.1.1" ]; then
+    wget https://github.com/tideways/php-xhprof-extension/archive/v4.1.1.tar.gz
     tar xzvf v4.1.1.tar.gz
-    cd php-profiler-extension-4.1.1
+    cd php-xhprof-extension-4.1.1
     if [ -f Makefile ]; then
         make distclean
     fi
