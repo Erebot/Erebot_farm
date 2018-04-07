@@ -33,19 +33,18 @@ echo -n "Installing 'pecl/tomcrypt'... "
 ( "$2/bin/pear" install -os "v${tomcrypt_ver}.tar.gz" < /dev/null > /dev/null && echo "OK" )
 cd "$curdir"
 
+exts=""
+uopz_ver=
 
 if [ "0$VMAJOR" -eq 5 -a "0$VMINOR" -eq 3 ]; then
     xdebug_ver=-2.2.7
     uopz_ver=-2.0.6
+elif [ 0$VMAJOR -lt 7 ]; then
+    xdebug_ver=-2.5.5
 else
     xdebug_ver=-2.6.0
-    uopz_ver=
 fi
 
-exts=" \
-    pecl/xdebug$xdebug_ver \
-    pecl/crypto-devel \
-"
 
 if [ 0$VMAJOR -lt 7 ]; then
     # Newer versions only support PHP 7.0.0+
@@ -77,6 +76,8 @@ pecl/libsodium \
 fi
 
 exts="$exts \
+pecl/xdebug$xdebug_ver \
+pecl/crypto-devel \
 pecl/raphf$raphf_ver \
 pecl/propro$propro_ver \
 pecl/pecl_http$http_ver \
