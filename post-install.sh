@@ -24,12 +24,13 @@ cd "$curdir"
 # Install LibTomcrypt bindings
 curdir=`pwd`
 cd $2/pear/temp
-if [ ! -f v0.3.0.tar.gz ]; then
-    wget https://github.com/fpoirotte/tomcrypt/archive/v0.3.0.tar.gz
+tomcrypt_ver="0.3.2"
+if [ ! -f "v${tomcrypt_ver}.tar.gz" ]; then
+    wget "https://github.com/fpoirotte/tomcrypt/archive/v${tomcrypt_ver}.tar.gz"
 fi
 echo -n "Installing 'pecl/tomcrypt'... "
 ( "$2/bin/pear" info pecl/tomcrypt &> /dev/null && echo "Already installed" ) || \
-( "$2/bin/pear" install -os v0.3.0.tar.gz < /dev/null > /dev/null && echo "OK" )
+( "$2/bin/pear" install -os "v${tomcrypt_ver}.tar.gz" < /dev/null > /dev/null && echo "OK" )
 cd "$curdir"
 
 
