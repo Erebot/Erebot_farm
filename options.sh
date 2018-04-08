@@ -24,7 +24,6 @@ configoptions="\
 --enable-bcmath=shared \
 --with-bz2=shared \
 --enable-calendar=shared \
---with-gettext=shared \
 --enable-mbstring=shared \
 --enable-pcntl=shared \
 --enable-sockets=shared \
