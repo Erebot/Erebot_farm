@@ -20,18 +20,16 @@ I currently keep several versions, spread across the following PHP branches:
 * PHP 5.6.x
 * PHP 7.0.x
 * PHP 7.1.x
-* test builds (nightly, alpha/beta/RC, etc.)
+* PHP 7.2.x
 
 For each branch, I build two "flavours":
 
 * A 64-bits version with a pear installation and debugging symbols.
 * A 32-bits version with a pear installation but no debugging symbols.
 
-These branches match the current stable branches from the official PHP project,
-with the addition of PHP 5.3.x and PHP 5.4.x which you can still find on some
-(maintained) Linux distributions, eg. RedHat Enterprise Linux 5.x.
-
-Sometimes, I build specific versions based on projects requirements.
+Usually, I try to keep the currently maintained versions, as well as a few older
+versions (for retro-compatibility testing on some projects).
+Sometimes, I also build specific versions based on projects requirements.
 
 
 Native extensions
@@ -52,7 +50,6 @@ More specifically, all native extensions have been disabled, except for:
 * dom
 * ereg (removed from PHP 7.0.0 onwards)
 * filter
-* gettext
 * gmp
 * hash
 * iconv
@@ -119,9 +116,10 @@ The following PECL extensions are installed:
 * vld
 * xdebug
 * -xhprof- (replaced by the Tideways PHP profiler)
+* tomcrypt (https://github.com/fpoirotte/tomcrypt/)
 
 
-Additionally, the main version also has the following PECL extensions:
+Additionally, the main version also supports the following PECL extensions:
 
 * curl
 * krb5
@@ -155,8 +153,6 @@ I use the default php.ini.dist file with a few changes listed below:
 
 * The ``extension_dir`` is set so that PECL and shared extensions can be loaded
 
-* -A default output directory as been set for xhprof's trace files-
-
 * ``phar.readonly`` is Off
 
 * Unicode detection is Off
@@ -188,9 +184,16 @@ The following special patches have been applied:
   library link to ``libssl.so`` and ``libcrypto.so``, even when they are not
   in their usual location (this is the case on multiarch systems where they
   will be in an architecture-specific directory).
-  This, in turn, avoids errors about missing symbols when loading ``openssl.so``
-  (``undefined symbol GENERAL_NAME_free``).
+  This, in turn, avoids errors about missing symbols when loading
+  ``openssl.so`` (``undefined symbol GENERAL_NAME_free``).
 
 * ``patch-openssl10-php53.diff`` for PHP 5.3.x: adds compatibility with the
   structures used in openssl 1.0.x.
 
+* ``phpdbg-conf-path.diff`` for PHP 5.6.x: changes phpdbg so that the path to
+  its configuration file is constructed using ``asprintf`` instead of relying
+  on the fact that ``PHP_CONFIG_FILE_PATH`` is a pre-processor macro.
+
+* ``core-constants.diff`` for all versions of PHP: changes the way core
+  constants such as ``PHP_BINDIR`` etc. are registered into the interpreter,
+  so as to make it possible to use a function instead of a pre-processor macro.
