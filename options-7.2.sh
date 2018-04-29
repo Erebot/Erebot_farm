@@ -1,7 +1,7 @@
 #!/bin/bash
 
 pushd "php-$1"
-patch -r - -N -p1 < ../custom/icu-pkg-config.diff
+patch -r - -N -p1 < ../custom/icu-pkg-config71.diff
 if [ $? -eq 0 ]; then
     PHP_AUTOCONF=autoconf ./buildconf --force
     touch --reference=buildconf configure
